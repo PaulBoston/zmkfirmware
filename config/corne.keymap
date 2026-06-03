@@ -41,6 +41,36 @@
         };
     };
 
+    macros {
+        wordLeft: wordLeft {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LEFT_ALT) &kp LEFT>;
+            label = "WORDLEFT";
+        };
+
+        wordRight: wordRight {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_ALT &kp RIGHT>;
+            label = "WORDRIGHT";
+        };
+
+        sentenceLeft: strokeLeft {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_GUI &kp LEFT>;
+            label = "STROKELEFT";
+        };
+
+        sentenceRight: sentenceRight {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_GUI &kp RIGHT>;
+            label = "SENTENCERIGHT";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -57,10 +87,10 @@
         lower_layer {
             display-name = "Lower";
             bindings = <
-&kp TAB    &kp N1  &kp N2  &kp N3                 &kp N4  &kp N5       &kp N6    &kp N7    &kp N8         &kp N9     &kp N0  &kp BSPC
-&kp LCTRL  &trans  &trans  &trans                 &trans  &trans       &kp LEFT  &kp DOWN  &kp UP         &kp RIGHT  &trans  &trans
-&kp LSHFT  &trans  &trans  &trans                 &trans  &trans       &trans    &trans    &trans         &trans     &trans  &trans
-                           &kp LC(LA(LG(LSHFT)))  &trans  &kp SPACE    &kp RET   &trans    &kp LC(SPACE)
+&trans  &kp N1         &kp N2     &kp N3      &kp N4          &kp N5    &kp N6    &kp N7    &kp N8  &kp N9     &kp N0  &trans
+&trans  &sentenceLeft  &wordLeft  &wordRight  &sentenceRight  &trans    &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
+&trans  &trans         &trans     &trans      &trans          &trans    &trans    &trans    &trans  &trans     &trans  &trans
+                                  &trans      &trans          &trans    &trans    &trans    &trans
             >;
         };
 
